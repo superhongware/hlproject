@@ -1,1566 +1,1026 @@
 {
 	"@platforms": ["android", "iPhone", "iPad"],
-	"id": "H5D6E103D",
-	"name": "商铺旺",
+	"id": "H5D7FD96F",/*必选，应用的标识*/
+	"name": "billowHome",/*必选，应用名称*/
 	"version": {
-		"name": "1.0.22",
-		"code": "83"
+		"name": "1.0",/*必选，版本名称*/
+		"code": ""
 	},
-	"description": "",
+	"description": "",/*可选，应用描述信息*/
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "login.html",
+	"fullscreen":true,
+	"launch_path": "index.html",/*必选，应用的入口页面，默认为根目录下的index.html；也可以是网络地址，网络地址必须以http://或https://开头*/
 	"developer": {
-		"name": "",
-		"email": "",
-		"url": "http://www.dcloud.io"
+		"email": "",/*可选，开发者名称*/
+		"name": "",/*可选，开发者邮箱地址*/
+		"url": ""/*可选，开发者自定义地址*/
 	},
 	"permissions": {
-		"Cache": {
-			"description": "管理应用缓存"
+		"Audio": {
+			"description": "访问麦克风"
 		},
-
-		"Console": {
-			"description": "跟踪调试输出日志"
+		"Camera": {
+			"description": "访问摄像头"
 		},
-
 		"Device": {
-			"description": "Device"
+			"description": "访问设备信息"
 		},
-
 		"Events": {
 			"description": "应用扩展事件"
 		},
 		"File": {
-			"description": "File"
+			"description": "访问本地文件系统"
 		},
-		"Invocation": {},
-		"Barcode": {
-			"description": "Barcode"
-		},
-		"Maps": {
-			"description": "Maps"
-		},
-		"Webview": {
-			"description": "窗口管理"
-		},
-		"NativeUI": {
-			"description": "原生UI控件"
-		},
-		"Navigator": {
-			"description": "Navigator"
-		},
-		"Push": {
-			"description": "管理推送消息插件"
+		"Gallery": {
+			"description": "访问系统相册"
 		},
 		"Storage": {
 			"description": "管理应用本地数据"
 		},
-		"NativeObj": {
-			"description": "NativeObj"
+		"Runtime": {
+			"description": "访问运行期环境"
 		},
-		"Runtime": {},"Downloader":{}
+		"XMLHttpRequest": {
+			"description": "跨域网络访问"
+		},
+		"Speech": {
+			"description": "管理语音识别插件"
+		},
+		"Zip": {
+			"description": "文件压缩与解压缩"
+		},
+		"Webview":{
+			"description": "窗口管理"
+		},
+		"NativeUI":{
+			"description": "原生UI控件"
+		},
+		"Navigator":{
+			"description": "浏览器信息"
+		}
 	},
 	"plus": {
+		"popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，none为无侧滑返回功能，hide为侧滑隐藏Webview窗口。参考ask.dcloud.net.cn/article/102*/
 		"splashscreen": {
-			"autoclose": true,
-			"waiting": false,
-			"delay": "0"
+			"autoclose": false,/*如果为true，程序启动的图片可以自动关闭，如果为false，开发者需要手动关闭*/
+			"waiting": true/*是否在程序启动界面显示等待雪花，true表示显示，false表示不显示。*/
 		},
-		"runmode": "liberate",
-		"hardwareAccelerated":true,
-		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",
+		"runmode": "normal",/*两个值，liberate或normal，前者在应用安装时释放资源，后者不需要释放资源*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
 		"distribute": {
-			"plugins": {
-				"push": {
-					"igexin": {
-						"appid": "T5pfIbbuuh9UBSySDx3yi7",
-						"appkey": "Rjr1UwvBXh84XZ5Z9FQYLA",
-						"appsecret": "O2RM9T6fDb6u3sIECaRrO5"
-					}
-				},
-				"maps": {
-					"baidu": {
-						"appkey_ios": "nHgx19s4lS7cBeGUp9dvkdjV",
-						"appkey_android": "7ZcS7W2biezNp7m2Tc5bay4I",
-						"appkey": "",
-						"description": ""
-					}
-				}
-			},
+			"debug": "",/*可选，是否为debug模式，可取值：true表示debug模式运行，false表示release模式运行，默认值为false*/
 			"apple": {
-				"appid": "",
-				"mobileprovision": "",
-				"password": "",
-				"p12": "",
-				"devices": "universal",
-				"UIStatusBarStyle":"UIStatusBarStyleBlackOpaque",
-				"UIReserveStatusbarOffset":false,
-				"frameworks": []
+				"appid": "",/*iOS必选，苹果开发网站申请的appid，如com.dheaven.hbuilder*/
+				"mobileprovision": "",/*iOS必选，打包配置文件*/
+				"password": "",/*iOS必选，导入配置文件密码*/
+				"p12": "",/*iOS必选，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iphone，可取值iphone/ipad/universal*/
+				"frameworks":[]/*用户在调用 Native.js 或开发第三方插件时使用到的 FrameWork 名*/
 			},
 			"google": {
-				"packagename": "",
-				"keystore": "",
-				"password": "",
-				"aliasname": "",
-				"permissions": ["<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.GET_TASKS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.BLUETOOTH\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
+				"packagename": "",/*Android必选，程序包名，如com.dheaven.hbuilder*/
+				"keystore": "",/*Android必选，打包证书文件*/
+				"password": "",/*Android必选，打包证书密码*/
+				"aliasname": "",/*Android必选，打包证书别名*/
+				"permissions": ["<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>", "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>", "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>", "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>", "<uses-permission android:name=\"android.permission.VIBRATE\"/>", "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>", "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>", "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>", "<uses-feature android:name=\"android.hardware.camera\"/>", "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>", "<uses-permission android:name=\"android.permission.CAMERA\"/>"]
+				/*使用 Native.js 调用原生安卓 API 需要申请的系统权限，用户可以添加多个权限的字符串*/
 			},
-			"orientation": ["portrait-primary", "portrait-secondary"],
+			"orientation": ["portrait-primary", "landscape-primary", "portrait-secondary", "landscape-secondary"],/*必选*/
 			"icons": {
 				"ios": {
-					"prerendered": true, 
-					"auto": "", 
+					"prerendered": "", /*必选，是否高亮显示*/
+					"auto": "", /*可选，512x512，用于自动生成各种尺寸图标的大分辨率程序图标*/
 					"iphone": {
-						"normal": "unpackage/res/icons/57x57.png",
-						"retina": "unpackage/res/icons/114x114.png",
-						"retina7": "unpackage/res/icons/120x120.png",
-						"spotlight-normal": "unpackage/res/icons/29x29.png", 
-						"spotlight-retina": "unpackage/res/icons/58x58.png", 
-						"spotlight-retina7": "unpackage/res/icons/80x80.png",
-						"settings-normal": "unpackage/res/icons/29x29.png", 
-						"settings-retina": "unpackage/res/icons/58x58.png",
-						"retina8": "unpackage/res/icons/180x180.png",
-						"settings-retina8": "unpackage/res/icons/87x87.png"
+						"normal": "",/*可选，57x57，iPhone普通屏幕程序图标*/
+						"retina": "",/*可选，114x114，iPhone高分屏程序图标*/
+						"retina7": "",/*可选，120x120，iPhone iOS7高分屏程序图标*/
+						"spotlight-normal": "", /*可选，29x29，iPhone Spotlight搜索程序图标*/
+						"spotlight-retina": "", /*可选，58x58，iPhone高分屏Spotlight搜索程序图标*/
+						"spotlight-retina7": "",/*可选，80x80，iPhone iOS7高分屏Spotlight搜索程序图标*/
+						"settings-normal": "", /*可选，29x29，iPhone设置页面程序图标*/
+						"settings-retina": "" /*iPhone 高分屏设置页面程序图标*/
 					},
 					"ipad": {
-						"normal": "unpackage/res/icons/72x72.png", 
-						"retina": "unpackage/res/icons/144x144.png", 
-						"normal7": "unpackage/res/icons/76x76.png", 
-						"retina7": "unpackage/res/icons/152x152.png", 
-						"spotlight-normal": "unpackage/res/icons/50x50.png", 
-						"spotlight-retina": "unpackage/res/icons/100x100.png", 
-						"spotlight-normal7": "unpackage/res/icons/40x40.png",
-						"spotlight-retina7": "unpackage/res/icons/80x80.png",
-						"settings-normal": "unpackage/res/icons/29x29.png",
-						"settings-retina": "unpackage/res/icons/58x58.png"
+						"normal": "", /*可选，72x72，iPad普通屏幕程序图标*/
+						"retina": "", /*可选，144x144，iPad高分屏程序图标*/
+						"normal7": "", /*可选，76x76，iPad iOS7程序图标*/
+						"retina7": "", /*可选，152x152，iPad iOS7高分屏程序图标*/
+						"spotlight-normal": "", /*可选，50x50，iPad Spotlight搜索程序图标*/
+						"spotlight-retina": "", /*可选，100x100，iPad高分屏Spotlight搜索程序图标*/
+						"spotlight-normal7": "",/*可选，40x40，iPad iOS7 Spotlight搜索程序图标*/
+						"spotlight-retina7": "",/*可选，80x80，iPad iOS7高分屏Spotlight搜索程序图标*/
+						"settings-normal": "",/*可选，29x29，iPad设置页面程序图标*/
+						"settings-retina": "" /*iPad 高分屏设置页面程序图标*/
 					}
 				},
 				"android": {
-					"mdpi": "unpackage/res/icons/48x48.png", 
-					"ldpi": "unpackage/res/icons/48x48.png", 
-					"hdpi": "unpackage/res/icons/72x72.png", 
-					"xhdpi": "unpackage/res/icons/96x96.png",
-					"xxhdpi": "unpackage/res/icons/144x144.png"
+					"mdpi": "", /*必选，48x48，普通屏程序图标*/
+					"ldpi": "", /*必选，48x48，大屏程序图标*/
+					"hdpi": "", /*必选，72x72，高分屏程序图标*/
+					"xhdpi": "",/*必选，96x96，720P高分屏程序图标*/
+					"xxhdpi": "" /*1080P 高分屏程序图标*/
 				}
 			},
 			"splashscreen": {
 				"ios": {
 					"iphone": {
-						"default": "C:/Users/herman/Desktop/证书/各尺寸启动页/Default.png", 
-						"retina35": "C:/Users/herman/Desktop/证书/各尺寸启动页/Default@2x.png",
-						"retina40": "C:/Users/herman/Desktop/证书/各尺寸启动页/Default-568h@2x.png",
-						"retina55": "C:/Users/herman/Desktop/证书/各尺寸启动页/Default-736h@3x.png",
-						"retina47": "C:/Users/herman/Desktop/证书/各尺寸启动页/Default-667h@2x.png",
-						"retina55l": "C:/Users/herman/Desktop/证书/各尺寸启动页/Default-736h@3x.png"
+						"default": "", /*必选，320x480，iPhone3启动图片*/
+						"retina35": "",/*必选，640x960，3.5英寸设备(iPhone4)启动图片*/
+						"retina40": "" /*4.0 英寸设备(iPhone5)启动图片*/
 					},
 					"ipad": {
-						"portrait": "C:/Users/herman/Desktop/证书/各尺寸启动页/768-1004.png", 
-						"portrait-retina": "C:/Users/herman/Desktop/证书/各尺寸启动页/1536-2008.png",
-						"landscape": "C:/Users/herman/Desktop/证书/各尺寸启动页/768-1024.png", 
-						"landscape-retina": "C:/Users/herman/Desktop/证书/各尺寸启动页/1536-2008.png", 
-						"portrait7": "C:/Users/herman/Desktop/证书/各尺寸启动页/768-1024.png", 
-						"portrait-retina7": "C:/Users/herman/Desktop/证书/各尺寸启动页/1536-2048.png",
-						"landscape7": "C:/Users/herman/Desktop/证书/各尺寸启动页/768-1024.png", 
-						"landscape-retina7": "C:/Users/herman/Desktop/证书/各尺寸启动页/1536-2048.png"
+						"portrait": "", /*可选，768x1004，需支持iPad时必选，iPad竖屏启动图片*/
+						"portrait-retina": "",/*可选，1536x2008，需支持iPad时必选，iPad高分屏竖屏图片*/
+						"landscape": "", /*可选，1024x748，需支持iPad时必选，iPad横屏启动图片*/
+						"landscape-retina": "", /*可选 ，2048x1496，需支持iPad时必选，iPad高分屏横屏启动图片*/
+						"portrait7": "", /*可选，768x1024，需支持iPad iOS7时必选，iPad竖屏启动图片*/
+						"portrait-retina7": "",/*可选，1536x2048，需支持iPad iOS7时必选，iPad高分屏竖屏图片*/
+						"landscape7": "", /*可选，1024x768，需支持iPad iOS7时必选，iPad横屏启动图片*/
+						"landscape-retina7": "" /*需支持 iPad iOS7 时必选，iPad 高分屏横屏启动*/
 					}
 				},
 				"android": {
-					"mdpi": "/Users/herman/Downloads/证书/安卓/240-282.png", 
-					"ldpi": "/Users/herman/Downloads/证书/安卓/320-442.png", 
-					"hdpi": "/Users/herman/Downloads/证书/安卓/480-762.png", 
-					"xhdpi": "/Users/herman/Downloads/证书/安卓/720-1242.png", 
-					"xxhdpi": "/Users/herman/Downloads/证书/安卓/1080-1882.png"
+					"mdpi": "", /*必选，240x282，普通屏启动图片*/
+					"ldpi": "", /*必选，320x442，大屏启动图片*/
+					"hdpi": "", /*必选，480x762，高分屏启动图片*/
+					"xhdpi": "", /*必选，720x1242，720P高分屏启动图片*/
+					"xxhdpi": "" /*1080p 高分屏启动图片*/
 				}
 			}
 		}
 	},
-	"fullscreen": false,
-	"dependencies": {
+	"dependencies" : {
 		"pages": {
-			"list/calldetail.html": {
-				"resources": [
-					"list/calldetail.js",
-					"fonts/mui.ttf",
-					"js/layer.m/need/layer.css",
-					"js/mui.min.js",
-					"css/mui.listpicker.css",
-					"css/style.css",
-					"css/stylebypad.css",
-					"js/layer.m/layer.m.js",
-					"js/common.js",
-					"js/mui.listpicker.js",
-					"js/mui.poppicker.js",
-					"css/iconfont.css",
-					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"js/apijs/api.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"home.html": {
-				"resources": [
-					"images/about-logo.png",
-					"js/mui.js",
-					"js/common.js",
-					"fonts/mui.ttf",
-					"css/iconfont.css",
-					"css/style.css",
-					"fonts/iconfont.ttf",
-					"js/apijs/api.js",
-					"css/mui.css",
-					"css/stylebypad.css"
-				],
-				"refer": [
-					"barcode/barcode_anchor.html",
-					"list/newlist2.html",
-					"list/shopcheck.html",
-					"index/xiaoxilist.html",
-					"datalist/linechart.html",
-					"list/newlist.html"
-				],
-				"priority": 0
-			},
 			"index.html": {
 				"resources": [
-					"more/more.html",
-					"fonts/mui.ttf",
-					"login.html",
-					"list/dingdan.html",
-					"css/style.css",
-					"item/items.html",
-					"css/mui.css",
-					"css/stylebypad.css",
-					"home.html",
 					"js/mui.min.js",
-					"css/iconfont.css",
-					"fonts/iconfont.ttf",
-					"js/apijs/api.js",
-					"home2.html",
-					"pages/login/login.html",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"styles/style.css",
-					"styles/mui.css",
-					"js/index.js",
-					"pages/home/home.html",
-					"pages/goods/goods.html",
-					"pages/order/order.html",
-					"pages/more/more.html",
-					"pages/goodsAction/goodsAction.html"
-				],
-				"refer": [
-					"list/listdetail.html",
-					"map/maps_map.html",
-					"list/addnewitem.html",
-					"list/shoppingcart.html",
-					"list/calldetail.html",
-					"list/listdetailbyshop.html",
-					"list/choose.html",
-					"more/tongzhituisong.html",
-					"datalist/linechart.html",
-					"list/newlist.html",
-					"more/setdevice.html",
-					"pages/more/pushSet.html",
-					"pages/order/orderDetail.html",
-					"pages/chart/chart.html",
-					"pages/cashr/cashrDetail.html",
-					"pages/map/map.html"
-				],
-				"priority": 0
-			},
-			"list/listdetail.html": {
-				"resources": [
-					"list/listdetail.js",
-					"images/cardpay.png",
-					"list/orderBarcode.js",
-					"images/pay.png",
-					"images/money.png",
 					"fonts/mui.ttf",
-					"css/mui.listpicker.css",
-					"css/style.css",
-					"css/stylebypad.css",
-					"js/layer.m/layer.m.js",
-					"js/common.js",
-					"js/mui.min.js",
-					"js/layer.m/need/layer.css",
-					"js/mui.poppicker.js",
-					"js/mui.listpicker.js",
-					"css/iconfont.css",
 					"css/mui.min.css",
-					"css/mui.poppicker.css",
-					"js/apijs/api.js",
-					"images/icontu/15.jpg",
-					"images/icontu/34.jpg",
-					"images/icontu/28.jpg",
-					"fonts/iconfont.ttf",
-					"images/weixin.png"
+					"js/update.js",
+					"list.html"
 				],
 				"refer": [
-					"barcode/barcode_payment.html"
+					"index-menu.html"
 				],
 				"priority": 0
 			},
-			"login.html": {
+			"examples/tab-webview-subpage-contact.html": {
 				"resources": [
-					"images/close.png",
-					"images/daogou.jpg",
-					"js/login.js",
-					"images/hwlogo.png",
-					"images/daogouphone.png",
-					"css/mui.css",
+					"images/60x60.gif",
 					"js/mui.min.js",
-					"css/iconfont.css",
-					"css/style.css",
-					"fonts/iconfont.ttf",
-					"js/apijs/api.js",
-					"css/stylebypad.css",
-					"js/app.js",
-					"js/vue.js",
-					"login.js",
-					"styles/iconfont.css",
-					"styles/mui.css",
-					"styles/styleAll.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-main.html": {
+				"resources": [
+					"examples/tab-webview-subpage-setting.html",
+					"examples/tab-webview-subpage-chat.html",
+					"examples/tab-webview-subpage-contact.html",
+					"examples/tab-webview-subpage-about.html",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"list.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/template.html",
+					"examples/tab-webview-main.html",
+					"examples/pullrefresh_main.html",
+					"examples/ajax.html",
+					"examples/accordion.html",
+					"examples/buttons.html",
+					"examples/guide.html",
+					"examples/badges.html",
+					"examples/actionsheet.html",
+					"examples/actionsheet-plus.html",
+					"examples/ad.html",
+					"examples/buttons-with-icons.html",
+					"examples/buttons-with-badges.html",
+					"examples/buttons-with-block.html",
+					"examples/checkbox.html",
+					"examples/clouddb_wilddog.html",
+					"examples/dtpicker.html",
+					"examples/date.html",
+					"examples/dialog.html",
+					"examples/slider-default.html",
+					"examples/slider-with-title.html",
+					"examples/slider-table-default.html",
+					"examples/slider-table-pagination.html",
+					"examples/grid-default.html",
+					"examples/grid-pagination.html",
+					"examples/icons.html",
+					"examples/input.html",
+					"examples/echarts.html",
+					"examples/imageviewer.html",
+					"examples/indexed-list.html",
+					"examples/indexed-list-select.html",
+					"examples/lazyload-image.html",
+					"examples/locker-dom.html",
+					"examples/login.html",
+					"examples/setting.html",
+					"examples/offcanvas-drag-right-plus-main.html",
+					"examples/offcanvas-drag-left-plus-main.html",
+					"examples/offcanvas-drag-right.html",
+					"examples/offcanvas-drag-left.html",
+					"examples/offcanvas-drag-down.html",
+					"examples/picker.html",
+					"examples/pagination.html",
+					"examples/popovers.html",
+					"examples/pullrefresh_with_tab.html",
+					"examples/radio.html",
+					"examples/range.html",
+					"examples/switches.html",
+					"examples/tabbar.html",
+					"examples/tabbar-with-submenus.html",
+					"examples/tab-with-viewpagerindicator.html",
+					"examples/tab-with-segmented-control.html",
+					"examples/tab-with-segmented-control-vertical.html",
+					"examples/typography.html",
+					"examples/im-chat.html",
+					"examples/info.html",
+					"examples/tableviews.html",
+					"examples/tableviews-with-badges.html",
+					"examples/list-with-input.html",
+					"examples/list-triplex-row.html",
+					"examples/tableviews-with-collapses.html",
+					"examples/tableviews-with-swipe.html",
+					"examples/media-list.html",
+					"examples/nav.html",
+					"examples/numbox.html"
+				],
+				"priority": 0
+			},
+			"examples/pullrefresh_main.html": {
+				"resources": [
+					"examples/pullrefresh_sub.html",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/ajax.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/accordion.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"images/shuijiao.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-setting.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"index-menu.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/offcanvas-drag-left.html"
+				],
+				"priority": 0
+			},
+			"examples/template.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-about.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/guide.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/badges.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
 					"fonts/mui.ttf"
 				],
-				"refer": [
-					"pages/more/pushSet.html",
-					"pages/order/orderDetail.html",
-					"pages/index/index.html",
-					"pages/chart/chart.html",
-					"pages/cashr/cashrDetail.html",
-					"pages/map/map.html",
-					"pages/tab/tab.html"
-				],
+				"refer": [],
 				"priority": 0
 			},
-			"list/dingdan.html": {
+			"examples/actionsheet.html": {
 				"resources": [
-					"js/layer.m/layer.m.js",
-					"js/ComUrl.js",
-					"js/layer.m/need/layer.css",
-					"js/mui.poppicker.js",
-					"js/mui.listpicker.js",
-					"list/dingdan.js",
-					"css/mui.listpicker.css",
-					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/actionsheet-plus.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/ad.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"js/common.js",
+					"js/ad.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons-with-icons.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons-with-badges.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/buttons-with-block.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/checkbox.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-webview-subpage-chat.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/clouddb_wilddog.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/dtpicker.html": {
+				"resources": [
+					"js/mui.picker.min.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.picker.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/date.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/dialog.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-default.html": {
+				"resources": [
 					"images/cbd.jpg",
-					"css/style.css",
-					"css/stylebypad.css",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
 					"js/mui.min.js",
-					"css/iconfont.css",
-					"js/apijs/api.js",
-					"fonts/mui.ttf",
-					"fonts/iconfont.ttf"
+					"css/app.css",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"item/items.html": {
+			"examples/slider-with-title.html": {
 				"resources": [
-					"js/common.js",
-					"item/items.js",
-					"css/mui.min.css",
 					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-table-default.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/slider-table-pagination.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/grid-default.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/grid-pagination.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/icons.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/input.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/pullrefresh_sub.html": {
+				"resources": [
 					"js/mui.min.js",
 					"fonts/mui.ttf",
-					"css/iconfont.css",
-					"css/style.css",
-					"js/apijs/api.js",
-					"css/stylebypad.css"
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"list/addnewitem.html": {
+			"examples/echarts.html": {
 				"resources": [
-					"list/addnewitem.js",
-					"list/orderBarcode.js"
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"libs/echarts-all.js"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"barcode/barcode_anchor.html": {
+			"examples/imageviewer.html": {
 				"resources": [
-					"css/common.css",
-					"js/common.js",
+					"js/mui.zoom.js",
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
 					"js/mui.min.js",
 					"fonts/mui.ttf",
-					"css/mui.css",
-					"js/apijs/api.js"
+					"css/mui.min.css",
+					"js/mui.previewimage.js",
+					"images/shuijiao.jpg"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"list/newlist2.html": {
+			"examples/indexed-list.html": {
 				"resources": [
-					"js/layer.m/layer.m.js",
-					"list/newlistBarcode.js",
-					"js/common.js",
-					"js/layer.m/need/layer.css",
+					"js/mui.min.js",
 					"fonts/mui.ttf",
-					"css/iconfont.css",
-					"list/newlist.js",
-					"css/style.css",
-					"js/mui.js",
-					"js/apijs/api.js",
-					"css/mui.css",
-					"css/stylebypad.css"
+					"css/mui.min.css",
+					"css/mui.indexedlist.css",
+					"js/mui.indexedlist.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/indexed-list-select.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.indexedlist.css",
+					"js/mui.indexedlist.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/lazyload-image.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"images/60x60.gif",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.lazyload.js",
+					"js/mui.lazyload.img.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/locker-dom.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.locker.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/login.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css",
+					"images/login-1.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/setting.html": {
+				"resources": [
+					"images/logo.png",
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"libs/easymob-webim-sdk/json2.js",
+					"libs/easymob-webim-sdk/jquery-1.11.1.js",
+					"js/feedback.js",
+					"css/feedback-page.css",
+					"js/feedback-page.js",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"js/mui.view.js",
+					"images/iconfont-tianjia.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-right-plus-main.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
 				],
 				"refer": [
-					"list/additembyself.html"
+					"examples/offcanvas-drag-right-plus-menu.html"
 				],
 				"priority": 0
 			},
-			"list/listdetailbyshop.html": {
+			"examples/offcanvas-drag-right-plus-menu.html": {
 				"resources": [
-					"images/cardpay.png",
-					"images/pay.png",
-					"images/money.png",
-					"fonts/mui.ttf",
-					"css/mui.listpicker.css",
-					"css/style.css",
-					"css/stylebypad.css",
-					"js/layer.m/layer.m.js",
-					"js/common.js",
 					"js/mui.min.js",
-					"js/layer.m/need/layer.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-left-plus-menu.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-left-plus-main.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"examples/offcanvas-drag-left-plus-menu.html"
+				],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-right.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-left.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/offcanvas-drag-down.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/picker.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.min.js",
+					"css/app.css",
 					"js/mui.poppicker.js",
-					"js/mui.listpicker.js",
-					"css/iconfont.css",
+					"fonts/mui.ttf",
 					"css/mui.min.css",
+					"js/city.data.js",
 					"css/mui.poppicker.css",
-					"js/apijs/api.js",
-					"images/weixin.png"
-				],
-				"refer": [
-					"list/buyers.html",
-					"barcode/barcode_promotionCode.html",
-					"barcode/barcode_payment.html"
-				],
-				"priority": 0
-			},
-			"list/shopcheck.html": {
-				"resources": [
-					"list/shopcheck.js",
-					"js/common.js",
-					"list/orderBarcode.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/iconfont.css",
-					"css/style.css",
-					"fonts/iconfont.ttf",
-					"js/apijs/api.js",
-					"css/mui.css",
-					"css/stylebypad.css",
-					"images/cbd.jpg"
-				],
-				"refer": [
-					"barcode/barcode_scan.html"
-				],
-				"priority": 0
-			},
-			"more/xitonglist.html": {
-				"resources": [
-					"js/common.js",
-					"js/mui.min.js",
-					"more/xitonglist.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/style.css",
-					"js/apijs/api.js"
+					"css/mui.picker.css",
+					"js/city.data-3.js"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"more/more.html": {
+			"examples/pagination.html": {
 				"resources": [
 					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/style.css",
-					"css/mui.css"
-				],
-				"refer": [
-					"more/xitonglist.html",
-					"more/addprinter.html"
-				],
-				"priority": 0
-			},
-			"index/xiaoxilist.html": {
-				"resources": [
-					"js/common.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"index/xiaoxilist.js",
-					"css/mui.min.css",
-					"css/style.css",
-					"js/apijs/api.js"
+					"css/app.css",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"datalist/linechart.html": {
+			"examples/popovers.html": {
 				"resources": [
-					"js/echarts-all.js",
-					"css/datalist.css",
-					"css/mui.min.css",
-					"fonts/mui.ttf",
-					"js/mui.js",
-					"js/common.js",
 					"js/mui.min.js",
-					"js/apijs/api.js"
-				],
-				"refer": [
-					"home2.html"
-				],
-				"priority": 0
-			},
-			"home2.html": {
-				"resources": [
-					"images/about-logo.png",
-					"css/datalist.css",
-					"js/common.js",
-					"js/mui.min.js",
+					"css/app.css",
 					"fonts/mui.ttf",
-					"css/iconfont.css",
-					"css/style.css",
-					"fonts/iconfont.ttf",
-					"js/apijs/api.js",
-					"css/mui.css",
-					"css/stylebypad.css",
-					"list/shopcheck.html"
-				],
-				"refer": [
-					"datalist/linechart.html",
-					"list/callin.html",
-					"list/newlist2.html",
-					"list/shopin.html",
-					"barcode/barcode_anchor.html",
-					"list/newlist.html"
-				],
-				"priority": 0
-			},
-			"list/choose.html": {
-				"resources": [
-					"js/mui.js",
-					"fonts/mui.ttf",
-					"css/mui.css",
-					"css/stylebypad.css",
-					"css/style.css",
-					"js/apijs/api.js"
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"list/callin.html": {
+			"examples/pullrefresh_with_tab.html": {
 				"resources": [
 					"js/mui.pullToRefresh.js",
-					"list/callin.js",
+					"js/mui.min.js",
 					"js/mui.pullToRefresh.material.js",
-					"js/mui.poppicker.js",
-					"js/mui.listpicker.js",
-					"css/mui.min.css",
-					"css/mui.listpicker.css",
-					"css/mui.poppicker.css",
 					"fonts/mui.ttf",
-					"css/style.css",
-					"css/stylebypad.css",
-					"js/common.js",
-					"js/mui.min.js",
-					"css/iconfont.css",
-					"fonts/iconfont.ttf",
-					"js/apijs/api.js"
-				],
-				"refer": [
-					"list/newcalllist.html"
-				],
-				"priority": 0
-			},
-			"list/shopin.html": {
-				"resources": [
-					"js/layer.m/layer.m.js",
-					"js/common.js",
-					"list/orderBarcode.js",
-					"js/mui.min.js",
-					"js/layer.m/need/layer.css",
-					"fonts/mui.ttf",
-					"list/shopin.js",
-					"css/iconfont.css",
-					"css/style.css",
-					"fonts/iconfont.ttf",
-					"js/apijs/api.js",
-					"css/mui.css",
-					"css/stylebypad.css",
-					"images/cbd.jpg"
-				],
-				"refer": [
-					"barcode/barcode_scan.html"
-				],
-				"priority": 0
-			},
-			"list/newcalllist.html": {
-				"resources": [
-					"list/newcalllist.js",
-					"list/newcallBarcode.js",
-					"css/mui.css"
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"barcode/barcode_scan.html": {
+			"examples/radio.html": {
 				"resources": [
-					"css/common.css",
-					"js/common.js",
+					"css/app.css",
 					"js/mui.min.js",
 					"fonts/mui.ttf",
-					"css/mui.css",
-					"js/apijs/api.js",
-					"css/style.css"
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"list/additembyself.html": {
+			"examples/range.html": {
 				"resources": [
 					"js/mui.min.js",
-					"css/mui.min.css",
-					"js/common.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/switches.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tabbar.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
 					"fonts/mui.ttf",
-					"css/iconfont.css",
-					"css/style.css",
-					"js/apijs/api.js",
-					"css/stylebypad.css",
-					"list/shoppingcart.html",
+					"images/60x60.gif",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tabbar-with-submenus.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-with-viewpagerindicator.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-with-segmented-control.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tab-with-segmented-control-vertical.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/typography.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/im-chat.html": {
+				"resources": [
+					"js/mui.imageViewer.js",
+					"images/logo.png",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.imageviewer.css",
+					"js/arttmpl.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/info.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/beecloud.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/beecloud.js",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews-with-badges.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/list-with-input.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/list-triplex-row.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews-with-collapses.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/tableviews-with-swipe.html": {
+				"resources": [
+					"css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/media-list.html": {
+				"resources": [
 					"images/cbd.jpg",
-					"list/newcallBarcode.js"
-				],
-				"refer": [
-					"list/newlist.html"
-				],
-				"priority": 0
-			},
-			"list/newlist.html": {
-				"resources": [
-					"list/newlistBarcode.js",
-					"list/newlist.js",
-					"js/layer.m/layer.m.js",
-					"js/common.js",
-					"js/layer.m/need/layer.css",
-					"fonts/mui.ttf",
-					"css/iconfont.css",
-					"css/style.css",
-					"js/mui.js",
-					"js/apijs/api.js",
-					"css/mui.css",
-					"css/stylebypad.css",
-					"list/shoppingcart.html",
-					"/index.html",
-					"index.html",
-					"fonts/iconfont.ttf",
-					"images/cbd.jpg"
-				],
-				"refer": [
-					"list/additembyself.html",
-					"barcode/barcode_cartscan.html",
-					"barcode/barcode_scan.html"
-				],
-				"priority": 0
-			},
-			"list/buyers.html": {
-				"resources": [
-					"js/cityData.js",
-					"js/common.js",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
 					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/iconfont.css",
-					"css/mui.min.css",
-					"css/style.css",
-					"js/apijs/api.js",
-					"css/stylebypad.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"list/shoppingcart.html": {
-				"resources": [
-					"js/common.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/iconfont.css",
-					"css/mui.min.css",
-					"css/style.css",
-					"js/apijs/api.js",
-					"css/stylebypad.css",
-					"list/additembyself.html",
-					"list/newlist.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"barcode/barcode_cartscan.html": {
-				"resources": [
-					"css/common.css",
-					"js/mui.min.js",
-					"js/common.js",
-					"fonts/mui.ttf",
-					"css/mui.css",
-					"js/apijs/api.js",
-					"css/style.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"more/addprinter.html": {
-				"resources": [
-					"js/mui.min.js",
+					"css/app.css",
 					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"css/style.css"
+					"images/shuijiao.jpg"
 				],
 				"refer": [],
 				"priority": 0
 			},
-			"more/setdevice.html": {
+			"examples/nav.html": {
 				"resources": [
-					"js/common.js",
 					"js/mui.min.js",
 					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"examples/numbox.html": {
+				"resources": [
+					"css/app.css",
 					"css/mui.min.css",
-					"css/style.css",
-					"js/apijs/api.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"map/maps_map.html": {
-				"resources": [
-					"fonts/mui.ttf",
-					"js/layer.m/need/layer.css",
-					"js/layer.m/layer.m.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"more/tongzhituisong.html": {
-				"resources": [
-					"fonts/mui.ttf",
-					"css/style.css",
-					"css/mui.min.css",
-					"js/common.js",
-					"js/mui.min.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"barcode/barcode_promotionCode.html": {
-				"resources": [
-					"css/common.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"barcode/barcode_payment.html": {
-				"resources": [
-					"css/common.css",
-					"js/mui.min.js",
-					"js/common.js",
-					"fonts/mui.ttf",
-					"css/mui.css",
-					"js/apijs/api.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/login/login.html": {
-				"resources": [
-					"images/close.png",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"styles/style.css",
-					"images/daogou.jpg",
-					"pages/login/login.js",
-					"js/mui.min.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"images/hwlogo.png",
-					"fonts/mui.ttf",
-					"styles/styleAll.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/order/orderDetail.html": {
-				"resources": [
-					"images/close.png",
-					"images/daogou.jpg",
-					"images/hwlogo.png",
-					"styles/iconfont.css",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"js/app.js",
-					"js/vue.js",
-					"fonts/mui.ttf",
-					"pages/order/orderDetail.js",
-					"images/icontu/15.jpg",
-					"images/icontu/34.jpg",
-					"styles/styleAll.css",
-					"images/cardpay.png",
-					"images/weixin.png",
-					"images/pay.png",
-					"images/money.png",
-					"images/logo.png"
-				],
-				"refer": [
-					"pages/map/map.html",
-					"pages/order/changePayType.html"
-				],
-				"priority": 0
-			},
-			"pages/home/home.html": {
-				"resources": [
-					"pages/home/home.js",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"images/about-logo.png",
-					"styles/styleAll.css"
-				],
-				"refer": [
-					"pages/goodsAction/goodsAction.html",
-					"login.html",
-					"pages/chart/chart.html",
-					"pages/barcode/orderScan.html",
-					"pages/more/msgList.html",
-					"pages/cashr/cashrCart.html",
-					"pages/map/location.html",
-					"pages/payLog/payLog.html",
-					"pages/vipCard/vipCard.html",
-					"pages/createVip/createVip.html",
-					"pages/vipRecharge/vipRecharge.html"
-				],
-				"priority": 0
-			},
-			"pages/goods/goods.html": {
-				"resources": [
-					"images/close.png",
-					"images/daogou.jpg",
-					"images/hwlogo.png",
-					"styles/iconfont.css",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"pages/goods/goods.js",
-					"js/app.js",
-					"js/vue.js",
-					"fonts/mui.ttf",
-					"images/logo.png",
-					"js/common.js",
-					"styles/styleAll.css"
-				],
-				"refer": [
-					"pages/barcode/orderScan.html",
-					"pages/goods/goodsDetail.html"
-				],
-				"priority": 0
-			},
-			"pages/more/pushSet.html": {
-				"resources": [
-					"images/close.png",
-					"styles/iconfont.css",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"images/daogou.jpg",
-					"images/hwlogo.png",
-					"js/app.js",
-					"js/vue.js",
-					"fonts/mui.ttf",
-					"styles/styleAll.css",
-					"js/common.js",
-					"pages/more/pushSet.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/chart/chart.html": {
-				"resources": [
-					"images/close.png",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"styles/style.css",
-					"images/daogou.jpg",
-					"js/mui.min.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"images/hwlogo.png",
-					"styles/styleAll.css",
-					"fonts/mui.ttf",
-					"pages/chart/chart.js",
-					"js/echarts-all.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/order/order.html": {
-				"resources": [
-					"images/close.png",
-					"styles/iconfont.css",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"images/daogou.jpg",
-					"images/hwlogo.png",
-					"pages/order/order.js",
-					"images/logo.png",
-					"js/app.js",
-					"js/vue.js",
-					"fonts/mui.ttf",
-					"styles/styleAll.css"
-				],
-				"refer": [
-					"pages/map/map.html",
-					"pages/barcode/orderScan.html"
-				],
-				"priority": 0
-			},
-			"pages/cashr/cashrDetail.html": {
-				"resources": [
-					"images/close.png",
-					"styles/iconfont.css",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"images/daogou.jpg",
-					"images/hwlogo.png",
-					"js/app.js",
-					"js/vue.js",
-					"styles/styleAll.css",
-					"images/cardpay.png",
-					"images/weixin.png",
-					"images/pay.png",
-					"images/money.png",
-					"fonts/mui.ttf",
-					"pages/cashr/cashrDetail.js",
 					"js/mui.js"
-				],
-				"refer": [
-					"pages/barcode/orderScan.html",
-					"pages/cashr/getAddress.html",
-					"pages/cashr/mixPay.html",
-					"pages/cashr/vipInfo.html"
-				],
-				"priority": 0
-			},
-			"pages/map/map.html": {
-				"resources": [
-					"images/close.png",
-					"styles/iconfont.css",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"images/daogou.jpg",
-					"images/hwlogo.png",
-					"js/app.js",
-					"js/vue.js",
-					"pages/map/map.js",
-					"fonts/mui.ttf",
-					"styles/styleAll.css",
-					"images/androidicon/c1.png",
-					"images/iosicon/c1.png",
-					"images/iosicon/c0.png",
-					"images/iosicon/c4.png",
-					"images/iosicon/c5.png",
-					"images/iosicon/c7.png",
-					"images/iosicon/c6.png",
-					"images/iosicon/c8.png",
-					"images/iosicon/c3.png",
-					"images/iosicon/c9.png",
-					"images/iosicon/c2.png",
-					"images/iosicon/d0.png",
-					"images/iosicon/d3.png",
-					"images/iosicon/d4.png",
-					"images/iosicon/d2.png",
-					"images/iosicon/d1.png",
-					"images/iosicon/st.png",
-					"images/iosicon/ed.png",
-					"images/iosicon/d7.png",
-					"images/iosicon/d6.png",
-					"images/iosicon/d8.png"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/more/more.html": {
-				"resources": [
-					"images/close.png",
-					"styles/iconfont.css",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"images/daogou.jpg",
-					"images/hwlogo.png",
-					"js/app.js",
-					"js/vue.js",
-					"fonts/mui.ttf",
-					"styles/styleAll.css",
-					"pages/more/pushSet.html",
-					"pages/more/msgList.html",
-					"pages/more/more.js"
-				],
-				"refer": [
-					"pages/more/join.html",
-					"pages/more/sendPro.html",
-					"pages/more/setPrinter.html",
-					"pages/more/about.html"
-				],
-				"priority": 0
-			},
-			"pages/goodsAction/goodsAction.html": {
-				"resources": [
-					"pages/goodsAction/goodsAction.js",
-					"js/mui.js",
-					"styles/styleAll.css",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"fonts/mui.ttf",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"images/logo.png",
-					"pages/goodsAction/goodsAction.html"
-				],
-				"refer": [
-					"pages/barcode/orderScan.html"
-				],
-				"priority": 0
-			},
-			"pages/index/index.html": {
-				"resources": [
-					"pages/index/index.js",
-					"pages/home/home.html",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"fonts/iconfont.ttf",
-					"styles/mui.css"
-				],
-				"refer": [
-					"pages/order/order.html",
-					"pages/goods/goods.html",
-					"pages/more/more.html"
-				],
-				"priority": 0
-			},
-			"pages/tab/tab.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"styles/style.css",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"pages/home/home.html",
-					"pages/tab/tab.js",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"js/common.js",
-					"styles/styleAll.css"
-				],
-				"refer": [
-					"pages/order/order.html",
-					"pages/goods/goods.html",
-					"pages/more/more.html",
-					"pages/more/pushSet.html",
-					"pages/order/orderDetail.html"
-				],
-				"priority": 0
-			},
-			"pages/more/join.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/more/setPrinter.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css",
-					"pages/more/setPrinter.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/more/about.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"images/about-logo.png",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css",
-					"pages/more/about.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/more/msgList.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css",
-					"pages/more/msgList.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/more/sendPro.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/barcode/orderScan.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"pages/barcode/orderScan.js",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/cashr/cashrCart.html": {
-				"resources": [
-					"pages/cashr/cashrCart.js",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"fonts/iconfont.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css",
-					"images/logo.png"
-				],
-				"refer": [
-					"pages/cashr/cashrDetail.html"
-				],
-				"priority": 0
-			},
-			"pages/cashr/getAddress.html": {
-				"resources": [
-					"js/app.js",
-					"pages/cashr/getAddress.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css",
-					"styles/iconfont.css",
-					"fonts/iconfont.ttf"
-				],
-				"refer": [
-					"pages/cashr/createAddress.html"
-				],
-				"priority": 0
-			},
-			"pages/cashr/createAddress.html": {
-				"resources": [
-					"pages/cashr/createAddress.js",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"styles/mui.css",
-					"styles/styleAll.css",
-					"fonts/mui.ttf",
-					"js/cityData.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/cashr/vipInfo.html": {
-				"resources": [
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css",
-					"js/app.js",
-					"js/vue.js",
-					"pages/cashr/vipInfo.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/barcode/payment.html": {
-				"resources": [
-					"pages/barcode/payment.js",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/cashr/mixPay.html": {
-				"resources": [
-					"images/42x42.gif",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"pages/cashr/mixPay.js",
-					"styles/mui.css",
-					"styles/styleAll.css",
-					"images/weixin2.png",
-					"images/shuaka.png",
-					"images/huiyuanka.png",
-					"images/zhifubao.png",
-					"images/qita.png",
-					"images/xianjin.png"
-				],
-				"refer": [
-					"pages/barcode/payment.html"
-				],
-				"priority": 0
-			},
-			"pages/map/locationMap.html": {
-				"resources": [
-					"pages/map/locationMap.js",
-					"fonts/iconfont.ttf",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/map/location.html": {
-				"resources": [
-					"pages/map/location.js",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [
-					"pages/map/locationMap.html"
-				],
-				"priority": 0
-			},
-			"pages/payLog/payDetail.html": {
-				"resources": [
-					"pages/payLog/payDetail.js",
-					"fonts/mui.ttf"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/payLog/payLog.html": {
-				"resources": [
-					"pages/payLog/payLog.js",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [
-					"pages/payLog/payDetail.html"
-				],
-				"priority": 0
-			},
-			"pages/createVip/createAddress.html": {
-				"resources": [
-					"pages/createVip/createAddress.js",
-					"js/cityData.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/vipCard/vipCard.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"pages/vipCard/vipCard.js",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/createVip/createVip.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"fonts/iconfont.ttf",
-					"pages/createVip/createVip.js",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [
-					"pages/createVip/createAddress.html"
-				],
-				"priority": 0
-			},
-			"pages/vipRecharge/vipRecharge.html": {
-				"resources": [
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"pages/vipRecharge/vipRecharge.js",
-					"styles/styleAll.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/order/changePayType.html": {
-				"resources": [
-					"pages/order/changePayType.js",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"pages/goods/goodsDetail.html": {
-				"resources": [
-					"pages/goods/goodsDetail.js",
-					"styles/iconfont.css",
-					"js/app.js",
-					"js/vue.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"styles/mui.css",
-					"styles/styleAll.css"
 				],
 				"refer": [],
 				"priority": 0
 			}
 		},
-		"index": {
-			"resources": [
-				"more/more.html",
-				"fonts/mui.ttf",
-				"login.html",
-				"list/dingdan.html",
-				"css/style.css",
-				"item/items.html",
-				"css/mui.css",
-				"css/stylebypad.css",
-				"home.html",
-				"js/mui.min.js",
-				"css/iconfont.css",
-				"fonts/iconfont.ttf",
-				"js/apijs/api.js"
-			],
-			"refer": [
-				"list/listdetail.html",
-				"map/maps_map.html",
-				"list/addnewitem.html",
-				"list/shoppingcart.html",
-				"list/calldetail.html",
-				"list/listdetailbyshop.html",
-				"list/choose.html",
-				"more/tongzhituisong.html"
-			],
-			"priority": 0
-		},
 		"idle": {
 			"resources": [
-				"css/layer.css",
-				"images/icontu/17.jpg",
-				"images/icontu/7.jpg",
-				"images/icontu/10.jpg",
-				"list/changelist.html",
-				"images/androidicon/start.png",
-				"images/60x60.gif",
-				"list/shoplist.html",
-				"images/abcde/F2.png",
-				"images/icontu/12.jpg",
-				"images/abcde/J.png",
-				"images/androidicon/c6.png",
-				"images/abcde/I2.png",
-				"images/abcde/I.png",
-				"images/androidicon/c7.png",
-				"images/icontu/16.jpg",
-				"item/changenum.js",
-				"more/addour.html",
-				"images/icontu/4.jpg",
-				"images/icontu/2.jpg",
-				"map/maps.html",
-				"json/shoplist.json",
-				"list/orderBarcodec.js",
-				"images/abcde/D.png",
-				"barcode/barcode.html",
-				"images/androidicon/end.png",
-				"images/abcde/C2.png",
-				"images/iosicon/start.png",
-				"images/abcde/B2.png",
-				"images/icontu/6.jpg",
-				"images/muwu.jpg",
-				"images/icontu/5.jpg",
-				"images/abcde/C.png",
-				"barcode/barcode_item.html",
-				"json/kickreson.json",
-				"list/callinold.html",
-				"js/zepto.js",
-				"images/icontu/9.jpg",
-				"images/icontu/23.jpg",
-				"map/maps_map.js",
-				"json/products.json",
-				"images/iosicon/d5.png",
-				"images/abcde/J2.png",
-				"list/detailitemCheck.js",
-				"images/abcde/E.png",
-				"images/androidicon/c9.png",
-				"images/abcde/G2.png",
-				"images/androidicon/c2.png",
-				"item/olditems.html",
-				"images/androidicon/d7.png",
-				"images/androidicon/d3.png",
-				"images/icontu/8.jpg",
-				"more/subtest.html",
-				"item/olditems.js",
-				"json/shopcheck.json",
-				"images/icontu/20.jpg",
-				"images/icontu/25.jpg",
-				"images/icontu/21.jpg",
-				"images/abcde/E2.png",
-				"images/abcde/G.png",
-				"images/shuijiao.jpg",
-				"images/pull_arrow.png",
-				"images/icontu/27.jpg",
-				"list/shoplist.js",
-				"images/icontu/26.jpg",
-				"images/abcde/D2.png",
-				"images/androidicon/c0.png",
-				"images/abcde/H2.png",
-				"images/abcde/start.png",
-				"list/listdetailbyself.html",
-				"list/detailitemCheck.html",
-				"js/print.js",
-				"images/abcde/B.png",
-				"images/pull_fresh.png",
-				"js/mui.enterfocus.js",
-				"images/haoxiangni.png",
-				"images/icontu/24.jpg",
-				"images/androidicon/d0.png",
-				"images/androidicon/c4.png",
-				"images/icontu/18.jpg",
-				"item/changenum.html",
-				"more/about.html",
-				"images/androidicon/d4.png",
-				"images/icontu/1.jpg",
-				"images/icontu/14.jpg",
-				"images/icontu/22.jpg",
-				"json/mendian.json",
-				"more/question.html",
-				"images/iosicon/end.png",
-				"images/androidicon/c8.png",
-				"images/androidicon/d2.png",
-				"json/detailList.json",
-				"images/icontu/19.jpg",
-				"json/callout.json",
-				"js/mymap.js",
-				"images/abcde/A.png",
-				"images/abcde/A2.png",
-				"images/androidicon/d8.png",
-				"js/commonscan.js",
-				"images/androidicon/d5.png",
-				"images/androidicon/d6.png",
-				"images/androidicon/c5.png",
-				"images/androidicon/d9.png",
-				"images/icontu/3.jpg",
-				"images/abcde/H.png",
-				"images/abcde/F.png",
-				"more/subtest.js",
-				"images/androidicon/d1.png",
-				"list/dis_dingdan.js",
-				"json/xiaoxi.json",
-				"images/yuantiao.jpg",
-				"item/itemBarcode.js",
-				"images/iosicon/d9.png",
-				"map/address.html",
-				"images/androidicon/c3.png",
-				"js/layer.m.js"
+				"js/mui.dtpicker.js",
+				"css/mui.listpicker.css",
+				"css/mui.dtpicker.css",
+				"css/mui.picker.all.css",
+				"examples/modals.html",
+				"examples/tabbar-labels-only.html",
+				"js/mui.listpicker.js",
+				"libs/easymob-webim-sdk/quickstart.md",
+				"js/mui.picker.all.js"
 			]
 		}
 	}
+
+	
 }

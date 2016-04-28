@@ -838,50 +838,49 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
  * @returns {undefined}
  */
 (function(document) {
-	if (!("classList" in document.documentElement) && Object.defineProperty && typeof HTMLElement !== 'undefined') {
+    if (!("classList" in document.documentElement) && Object.defineProperty && typeof HTMLElement !== 'undefined') {
 
-		Object.defineProperty(HTMLElement.prototype, 'classList', {
-			get: function() {
-				var self = this;
+        Object.defineProperty(HTMLElement.prototype, 'classList', {
+            get: function() {
+                var self = this;
+                function update(fn) {
+                    return function(value) {
+                        var classes = self.className.split(/\s+/),
+                                index = classes.indexOf(value);
 
-				function update(fn) {
-					return function(value) {
-						var classes = self.className.split(/\s+/),
-							index = classes.indexOf(value);
+                        fn(classes, index, value);
+                        self.className = classes.join(" ");
+                    };
+                }
 
-						fn(classes, index, value);
-						self.className = classes.join(" ");
-					};
-				}
+                var ret = {
+                    add: update(function(classes, index, value) {
+                        ~index || classes.push(value);
+                    }),
+                    remove: update(function(classes, index) {
+                        ~index && classes.splice(index, 1);
+                    }),
+                    toggle: update(function(classes, index, value) {
+                        ~index ? classes.splice(index, 1) : classes.push(value);
+                    }),
+                    contains: function(value) {
+                        return !!~self.className.split(/\s+/).indexOf(value);
+                    },
+                    item: function(i) {
+                        return self.className.split(/\s+/)[i] || null;
+                    }
+                };
 
-				var ret = {
-					add: update(function(classes, index, value) {
-						~index || classes.push(value);
-					}),
-					remove: update(function(classes, index) {
-						~index && classes.splice(index, 1);
-					}),
-					toggle: update(function(classes, index, value) {
-						~index ? classes.splice(index, 1) : classes.push(value);
-					}),
-					contains: function(value) {
-						return !!~self.className.split(/\s+/).indexOf(value);
-					},
-					item: function(i) {
-						return self.className.split(/\s+/)[i] || null;
-					}
-				};
+                Object.defineProperty(ret, 'length', {
+                    get: function() {
+                        return self.className.split(/\s+/).length;
+                    }
+                });
 
-				Object.defineProperty(ret, 'length', {
-					get: function() {
-						return self.className.split(/\s+/).length;
-					}
-				});
-
-				return ret;
-			}
-		});
-	}
+                return ret;
+            }
+        });
+    }
 })(document);
 
 /**
@@ -1057,13 +1056,13 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 		return classSelector.replace(/\./g, $.classSelectorPrefix);
 	};
 	/**
-	 * 返回正确的eventName
-	 * @param {type} event
-	 * @param {type} module
-	 * @returns {String}
-	 */
+         * 返回正确的eventName
+         * @param {type} event
+         * @param {type} module
+         * @returns {String}
+         */
 	$.eventName = function(event, module) {
-		return event + ($.namespace ? ('.' + $.namespace) : '') + (module ? ('.' + module) : '');
+		return event + ($.namespace ? ('.' + $.namespace) : '') + ( module ? ('.' + module) : '');
 	};
 })(mui);
 
@@ -3027,18 +3026,18 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 (function($, window, undefined) {
 	$.offset = function(element) {
 		var box = {
-			top: 0,
-			left: 0
+			top : 0,
+			left : 0
 		};
-		if (typeof element.getBoundingClientRect !== undefined) {
+		if ( typeof element.getBoundingClientRect !== undefined) {
 			box = element.getBoundingClientRect();
 		}
 		return {
-			top: box.top + window.pageYOffset - element.clientTop,
-			left: box.left + window.pageXOffset - element.clientLeft
+			top : box.top + window.pageYOffset - element.clientTop,
+			left : box.left + window.pageXOffset - element.clientLeft
 		};
 	};
-})(mui, window);
+})(mui, window); 
 /**
  * mui animation
  */
@@ -3107,7 +3106,6 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				})(name, prop[name]) :
 				prop[name];
 		}
-
 		function Class() {
 			if (!initializing && this.init)
 				this.init.apply(this, arguments);
@@ -5974,11 +5972,8 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 		var args = arguments;
 		this.each(function() {
 			$.targets._popover = this;
-			if (args[0] === 'show' || args[0] === 'toggle') {
-				togglePopover(this, args[1]);
-			} else if (args[0] === 'hide') {
-				this.classList.remove(CLASS_ACTIVE);
-				removeBackdrop(this);
+			if (args[0] === 'show' || args[0] === 'hide' || args[0] === 'toggle') {
+				togglePopover(this, args[1], args[0]);
 			}
 		});
 	};
